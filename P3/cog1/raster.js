@@ -153,7 +153,6 @@ define(["exports", "shader", "framebuffer", "data", "glMatrix"], //
                 }
             } else {
                 e = dYAbs - dXAbs2;
-
                 while (n != dY) {
                     n += dYSign;
                     y += dYSign;

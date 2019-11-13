@@ -127,17 +127,20 @@ define(["exports", "shader", "framebuffer", "data", "glMatrix"], //
             var interpolationWeight = 0;
             var deltaInterpolationWeight;
 
+
             // BEGIN exercise Bresenham
 
             framebuffer.set(x, y, getZ(x, y), color);
-            
+
             if (dX === 0 && dY === 0) {
                 return;
             }
 
+            let n = 0;
             if (dXAbs >= dYAbs) {
                 e = dXAbs - dYAbs2;
-                for (let i = 0; i < dX; i++) {
+                while (n != dX) {
+                    n += dXSign;
                     x += dXSign;
 
                     if (e > 0) {
@@ -150,7 +153,9 @@ define(["exports", "shader", "framebuffer", "data", "glMatrix"], //
                 }
             } else {
                 e = dYAbs - dXAbs2;
-                for (let i = 0; i < dY; i++) {
+
+                while (n != dY) {
+                    n += dYSign;
                     y += dYSign;
 
                     if (e > 0) {
@@ -159,7 +164,7 @@ define(["exports", "shader", "framebuffer", "data", "glMatrix"], //
                         x += dXSign;
                         e += dYdXdiff2;
                     }
-            		addIntersection(x,y, getZ(x,y), interpolationWeight,  edgeStartVertexIndex, edgeEndVertexIndex, edgeStartTextureCoord, edgeEndTextureCoord);
+                    addIntersection(x, y, getZ(x, y), interpolationWeight, edgeStartVertexIndex, edgeEndVertexIndex, edgeStartTextureCoord, edgeEndTextureCoord);
                     framebuffer.set(x, y, getZ(x, y), color);
                 }
             }

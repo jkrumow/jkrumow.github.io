@@ -19,11 +19,10 @@ function(exports, scenegraph, animation) {
 
 		// BEGIN exercise myModel
 
-		var cubeNode1 = scenegraph.createNodeWithModel("cube 1", "cube", {scale:200});
-		cubeNode1.rotateTo([0.22, 5.88, 0]);
-		
 		// END exercise myModel
 		
+		var teapotNode = scenegraph.createNodeWithModel("teapot", "teapot", {color:0, scale:40});
+
 		return;
 
 		var cubeNode = scenegraph.createNodeWithModel("cube", "cube", {scale:300});
@@ -56,6 +55,8 @@ function(exports, scenegraph, animation) {
 
 		var emptyNode1 = scenegraph.createNodeWithModel("empty", "empty");		
 
+		var myModel = scenegraph.createNodeWithModel("myModel", "myModel", {color: 6, scale:50});
+		myModel.rotateTo([0.22, 5.88, 0]);
 
         // BEGIN exercise Scenegraph		
 		

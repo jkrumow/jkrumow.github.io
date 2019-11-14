@@ -49,13 +49,13 @@ define(["exports", "data"], function(exports, data) {
 			// bottom (y=-1)
 			[-1,-1, 1],
 			[ 1,-1, 1],
-			// [ 1,-1,-1],
-			// [-1,-1,-1],
+			[ 1,-1,-1],
+			[-1,-1,-1],
 			// top (y=+1)		
 			[-1,1, 1],
-			[ 1,1, 1]
-			// [ 1,1,-1],
-			// [-1,1,-1],
+			[ 1,1, 1],
+			[ 1,1,-1],
+			[-1,1,-1],
 		];
 		// Use default colors, implicitly.
 		// instance.colors = data.colors;
@@ -63,15 +63,12 @@ define(["exports", "data"], function(exports, data) {
 		// Corners of the faces have to fit the texture coordinates.			
 		// Faces: bottom/down, top/up, front, right, back, left. 
 		instance.polygonVertices = [
-
-			[0,1,3,2]
-
-			// [3,2,1,0],
-			// [4,5,6,7],
-			// [4,0,1,5],
-			// [1,2,6,5],
-			// [6,2,3,7],
-			// [3,0,4,7]
+			[3,2,1,0],
+			[4,5,6,7],
+			[4,0,1,5],
+			[1,2,6,5],
+			[6,2,3,7],
+			[3,0,4,7]
 		];	
 
 		instance.polygonColors = [0,1,2,3,4,5];

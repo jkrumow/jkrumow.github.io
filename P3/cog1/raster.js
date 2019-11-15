@@ -136,11 +136,9 @@ define(["exports", "shader", "framebuffer", "data", "glMatrix"], //
                 return;
             }
 
-            let n = 0;
             if (dXAbs >= dYAbs) {
                 e = dXAbs - dYAbs2;
-                while (n != dX) {
-                    n += dXSign;
+                while (x != endX) {
                     x += dXSign;
 
                     if (e > 0) {
@@ -153,8 +151,7 @@ define(["exports", "shader", "framebuffer", "data", "glMatrix"], //
                 }
             } else {
                 e = dYAbs - dXAbs2;
-                while (n != dY) {
-                    n += dYSign;
+                while (y != endY) {
                     y += dYSign;
 
                     if (e > 0) {

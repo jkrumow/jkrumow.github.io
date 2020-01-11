@@ -239,9 +239,9 @@ define(["exports", "shader", "framebuffer", "data", "glMatrix"], //
             // to determine z-values of intermediate points.
             // Maybe skip polygons that are perpendicular to the screen / xy-plane.
             // The plane calculation can be commented out if bi-linear interpolation is applied.
-            if (!calcPlaneEquation(vertices, polygon)) {
-                return;
-            }
+            // if (!calcPlaneEquation(vertices, polygon)) {
+            //     return;
+            // }
 
             // Sign ()+-1) of derivative of edge.
             var derivative = undefined;
@@ -325,7 +325,7 @@ define(["exports", "shader", "framebuffer", "data", "glMatrix"], //
             // BEGIN exercise Z-Buffer (for interpolation of z)
 
             // Calculate dz for linear interpolation along a scanline.
-            AdivC = -1 * (A / C);
+            interpolationData.dz = (endIntersection.z - startIntersection.z) / (endIntersection.x - startIntersection.x);
 
             // END exercise Z-Buffer
 
@@ -391,7 +391,7 @@ define(["exports", "shader", "framebuffer", "data", "glMatrix"], //
             // BEGIN exercise Z-Buffer (for interpolation of z or plane equ)
 
             // Calculate z for next pixel, i.e. apply dz step.
-            interpolationData.z += AdivC;
+            interpolationData.z += interpolationData.dz;
 
             // END exercise Z-Buffer
 

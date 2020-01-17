@@ -130,7 +130,9 @@ define(["exports", "shader", "framebuffer", "data", "glMatrix"], //
 
             // BEGIN exercise Bresenham
 
-            framebuffer.set(x, y, z, color);
+            if (!storeIntersectionForScanlineFill) {
+                framebuffer.set(x, y, z, color);
+            }
 
             if (dX === 0 && dY === 0) {
                 return;

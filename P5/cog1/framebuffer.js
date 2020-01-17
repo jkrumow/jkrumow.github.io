@@ -140,11 +140,11 @@ define(["exports", "scene"], function (exports, scene) {
 			return true;
 		}
 
-		if (pixel < z) {
+		if (z > pixel) {
 			// Use some small epsilon to determine z-buffer fights
 			// in favor of the the polygon processed first or last (depending on sign).
 			// Epsilon depends on the z-range of the scene.
-			if (Math.abs(z - pixel) > 0.01) {
+			if (Math.abs(z - pixel) > 1) {
 
 				// Guess some decent epsilon (which may be >1 despite the name).
 

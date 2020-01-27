@@ -114,7 +114,7 @@ define(["exports", "scenegraph", "animation"], //
 			// If not set, it is the first node created.
 			//scenegraph.setInteractiveNodeByName("sphere");
 			//scenegraph.setInteractiveNode(torusNode);
-			scenegraph.setInteractiveNode(dirtyTeapotNode);
+			scenegraph.setInteractiveNode(teapotNode);
 
 			// Create a node for the light, which is not visible by default.
 			var lightnode = scenegraph.createPointLightNode("light", "diamond");

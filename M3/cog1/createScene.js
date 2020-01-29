@@ -27,6 +27,7 @@ define(["exports", "scenegraph", "animation"], //
 			// BEGIN M2 Sphere
 
 			var mySphere = scenegraph.createNodeWithModel("mySphere", "mySphere", { scale: 300, color: 3 });
+			mySphere.rotateTo([0.22, 5.88, 0]);
 
 			// END M2 Sphere
 
@@ -88,8 +89,8 @@ define(["exports", "scenegraph", "animation"], //
 			// Set visibility of nodes (hide: set to false).
 			// Comment out what you want to see as the default is visible.
 			myModel.setVisible(false);
-			mySphere.setVisible(false);
-			cubeNode.setVisible(true);
+			mySphere.setVisible(true);
+			cubeNode.setVisible(false);
 			cubeNode1.setVisible(false);
 			cubeNode2.setVisible(false);
 			cubeNode3.setVisible(false);
@@ -112,7 +113,7 @@ define(["exports", "scenegraph", "animation"], //
 			// If not set, it is the first node created.
 			//scenegraph.setInteractiveNodeByName("sphere");
 			//scenegraph.setInteractiveNode(torusNode);
-			scenegraph.setInteractiveNode(cubeNode);
+			scenegraph.setInteractiveNode(mySphere);
 
 			// Create a node for the light, which is not visible by default.
 			var lightnode = scenegraph.createPointLightNode("light", "diamond");

@@ -11,7 +11,7 @@ define(["exports", "dojo", "dojo/dom-style", "app", "scenegraph", "createScene",
 		// Variables with initialization parameters.
 		//
 		// Fill or stroke polygon.
-		var fill = true;
+		var fill = false;
 		// Display normals for debug.
 		var displayNormals = false;
 		var defaultNormalLength = 50;
@@ -28,7 +28,7 @@ define(["exports", "dojo", "dojo/dom-style", "app", "scenegraph", "createScene",
 		// Show a grid along the axis-planes for debug.
 		var showGrid = false;
 		// Perform backface culling.
-		var backfaceCulling = false;
+		var backfaceCulling = true;
 		// Clean the data on initialization.
 		var cleanDataOnInit = false;
 		// Set true if triangulation should be performed on the data on init.

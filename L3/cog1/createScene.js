@@ -55,7 +55,7 @@ define(["exports", "scenegraph", "animation"], //
 			var teapotNode = scenegraph.createNodeWithModel("teapot", "teapot", { color: 0, scale: 30 });
 			teapotNode.rotate([0.35, -0.18, 0.0]);
 
-			var dirtyTeapotNode = scenegraph.createNodeWithModel("dirtyTeapot", "teapot_dirty", { color: 8, scale: 30 });
+			var dirtyTeapotNode = scenegraph.createNodeWithModel("dirtyTeapot", "teapot_dirty", { color: 8 });
 			dirtyTeapotNode.rotate([0.54, 0.25, 0.0]);
 
 			var waltheadNode = scenegraph.createNodeWithModel("walthead", "walthead", { color: 7 });
@@ -102,8 +102,8 @@ define(["exports", "scenegraph", "animation"], //
 			diamondNode.setVisible(false);
 			torusNode.setVisible(false);
 			torusNode1.setVisible(false);
-			teapotNode.setVisible(false);
-			dirtyTeapotNode.setVisible(true);
+			teapotNode.setVisible(true);
+			dirtyTeapotNode.setVisible(false);
 			waltheadNode.setVisible(false);
 			plainNode1.setVisible(false);
 			plainTriangles.setVisible(false);
@@ -114,7 +114,7 @@ define(["exports", "scenegraph", "animation"], //
 			// If not set, it is the first node created.
 			//scenegraph.setInteractiveNodeByName("sphere");
 			//scenegraph.setInteractiveNode(torusNode);
-			scenegraph.setInteractiveNode(dirtyTeapotNode);
+			scenegraph.setInteractiveNode(teapotNode);
 
 			// Create a node for the light, which is not visible by default.
 			var lightnode = scenegraph.createPointLightNode("light", "diamond");

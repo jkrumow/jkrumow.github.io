@@ -53,7 +53,7 @@ define(["exports", "scenegraph", "animation"], //
 			var torusNode1 = scenegraph.createNodeWithModel("torus 13", "torus", { r2: 50, n2: 13, color: 8 });
 
 			var teapotNode = scenegraph.createNodeWithModel("teapot", "teapot", { color: 0, scale: 30 });
-			teapotNode.rotate([0.35, -0.18, 0.0]);
+			teapotNode.rotate([0.35, 0.40, 0.0]);
 
 			var dirtyTeapotNode = scenegraph.createNodeWithModel("dirtyTeapot", "teapot_dirty", { color: 8 });
 			dirtyTeapotNode.rotate([0.54, 0.25, 0.0]);

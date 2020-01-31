@@ -381,9 +381,15 @@ define(["exports"], function (exports) {
 		var weightStart = 1 - scanlineInterpolationLightIntensity;
 		var weightEnd = scanlineInterpolationLightIntensity;
 
-		var intensity = scanlineInterpolationLightIntensities[0] * weightStart +
-			scanlineInterpolationLightIntensities[1] * weightEnd;
-		vec3.scale(color.rgba, intensity, color.rgbaShaded);
+		var intensityAD = scanlineInterpolationLightIntensities[0][0] * weightStart +
+			scanlineInterpolationLightIntensities[1][0] * weightEnd;
+		vec3.scale(color.rgba, intensityAD, color.rgbaShaded);
+
+		var intensitySP = scanlineInterpolationLightIntensities[0][1] * weightStart +
+			scanlineInterpolationLightIntensities[1][1] * weightEnd;
+		var specularWhite = [255, 255, 255, 255];
+		vec3.scale(specularWhite, intensitySP);
+		vec3.add(color.rgbaShaded, specularWhite);
 	}
 
 	/**
@@ -398,7 +404,7 @@ define(["exports"], function (exports) {
 		for (var v = 0; v < polygon.length; v++) {
 			var vertexIndex = polygon[v];
 			var intensity = calcLightIntensity(vertices[vertexIndex], vertexNormals[vertexIndex]);
-			polygonVertexLightIntensity[vertexIndex] = intensity.total;
+			polygonVertexLightIntensity[vertexIndex] = intensity;
 		}
 	}
 
@@ -424,8 +430,9 @@ define(["exports"], function (exports) {
 
 			var intensity0 = polygonVertexLightIntensity[vertexIndex0];
 			var intensity1 = polygonVertexLightIntensity[vertexIndex1];
-			var intensity = intensity0 * weight0 + intensity1 * weight1;
-			scanlineInterpolationLightIntensities.push(intensity);
+			var intensityAD = intensity0.ambientDiffuse * weight0 + intensity1.ambientDiffuse * weight1;
+			var intensitySP = intensity0.specular * weight0 + intensity1.specular * weight1;
+			scanlineInterpolationLightIntensities.push([intensityAD, intensitySP]);
 		}
 
 		// Calculate delta for light intensity interpolation.

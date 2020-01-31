@@ -18,6 +18,7 @@ define(["exports", "data"], function (exports, data) {
         if (parameter) {
             var scale = parameter.scale;
             var color = parameter.color;
+            var sphereness = parameter.sphereness
         }
         // Set default values if parameter is undefined.
         if (scale == undefined) {
@@ -25,6 +26,11 @@ define(["exports", "data"], function (exports, data) {
         }
         if (color == undefined) {
             color = 2;
+        }
+
+        // defines the roundness of the sphere
+        if (sphereness == undefined) {
+            sphereness = 3;
         }
 
         // Instance of the model to be returned.
@@ -41,9 +47,6 @@ define(["exports", "data"], function (exports, data) {
         instance.polygonVertices = [
             [0, 2, 1]
         ];
-
-        // defines the roundness of the sphere
-        var sphereness = 3;
 
         function buildSphereFragment() {
             instance.polygonVertices = splitPolygon(instance.polygonVertices[0], sphereness);

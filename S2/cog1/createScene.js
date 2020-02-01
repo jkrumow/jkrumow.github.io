@@ -154,7 +154,7 @@ define(["exports", "scenegraph", "animation"], //
 
 			// Set light parameter.
 			// ambientLI, pointLI, pointPos, specularLI, specularLIExpo
-			scenegraph.setLights(0.3, 0.9, [847, 247, 500], 1.0, 12.0);
+			scenegraph.setLights(0.5, 0.9, [0, 0, 330], 1.0, 12.0);
 		}
 
 		// Public API.

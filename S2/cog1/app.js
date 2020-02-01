@@ -9,7 +9,7 @@ define(["exports", "layout", "ui", "scene", "animation"], //
 
 		// Animation loop is running Continuously and scene is rendered continuously.
 		// This is set true for animations.
-		var runAnimation = false;
+		var runAnimation = true;
 		// A frame is being rendered, and we ignore requests, e.g., from the UI.
 		var busyRendering = false;
 

@@ -596,14 +596,15 @@ define(["exports"], function (exports) {
 
 		// Use zones for discretization.
 		var toonIntensity = intensity.ambientDiffuse;
-		if (toonIntensity < 0.3) toonIntensity = 0.0;
-		else if (toonIntensity < 0.5) toonIntensity = 0.5;
-		else if (toonIntensity < 1.0) toonIntensity = 1.0;
+		if (toonIntensity < sumOfAllLightTypesIntensity * 0.1) toonIntensity = 0.2;
+		else if (toonIntensity < sumOfAllLightTypesIntensity * 0.2) toonIntensity = 0.4;
+		else if (toonIntensity < sumOfAllLightTypesIntensity * 0.5) toonIntensity = 0.8;
+		else toonIntensity = 1.0;
 		vec3.scale(color.rgba, toonIntensity, color.rgbaShaded);
 
 		var toonSpecular = intensity.specular;
-		if (toonSpecular < 0.5) toonSpecular = 0.0;
-		else if (toonSpecular < 1.0) toonSpecular = 1.0;
+		if (toonSpecular < sumOfAllLightTypesIntensity * 0.25) toonSpecular = 0.0;
+		else if (toonSpecular < sumOfAllLightTypesIntensity) toonSpecular = 1.0;
 
 		// Add white specular light.
 		var specularWhite = [255, 255, 255, 255];

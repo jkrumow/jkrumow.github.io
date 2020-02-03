@@ -597,8 +597,9 @@ define(["exports"], function (exports) {
 		// Use zones for discretization.
 		var toonIntensity = intensity.ambientDiffuse;
 		if (toonIntensity < 0.1) toonIntensity = 0.0;
-		else if (toonIntensity < 0.2) toonIntensity = 0.2;
-		else if (toonIntensity < 0.5) toonIntensity = 0.5;
+		else if (toonIntensity < 0.2) toonIntensity = 0.1;
+		else if (toonIntensity < 0.5) toonIntensity = 0.3;
+		else if (toonIntensity < 0.7) toonIntensity = 0.5;
 		else if (toonIntensity < 1.0) toonIntensity = 1.0;
 		vec3.scale(color.rgba, toonIntensity, color.rgbaShaded);
 

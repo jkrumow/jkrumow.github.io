@@ -117,7 +117,7 @@ define(["exports"], function (exports) {
 		//console.log("SambientLightIntensity: "+ambientLightIntensity+"  pointLightIntensity: "+ pointLightIntensity);
 		specularLightIntensity = specularLI != undefined ? specularLI : specularLightIntensity;
 		specularLightExponent = specularLIExpo != undefined ? specularLIExpo : specularLightExponent;
-		sumOfAllLightTypesIntensity = ambientLightIntensity + pointLightIntensity + specularLightIntensity;
+		sumOfAllLightTypesIntensity = ambientLightIntensity + pointLightIntensity;// + specularLightIntensity;
 		//console.log("setLights sumOfAllLightTypesIntensity: "+sumOfAllLightTypesIntensity);
 
 		// Check change in position.
@@ -595,16 +595,16 @@ define(["exports"], function (exports) {
 		var intensity = calcLightIntensity(scanlineInterpolationVertex, scanlineInterpolationNormal);
 
 		// Use zones for discretization.
-		var toonIntensity = intensity.ambientDiffuse;
-		if (toonIntensity < sumOfAllLightTypesIntensity * 0.1) toonIntensity = 0.2;
-		else if (toonIntensity < sumOfAllLightTypesIntensity * 0.2) toonIntensity = 0.4;
-		else if (toonIntensity < sumOfAllLightTypesIntensity * 0.5) toonIntensity = 0.8;
-		else toonIntensity = 1.0;
+		var toonIntensity = 1 / sumOfAllLightTypesIntensity * intensity.ambientDiffuse;
+		if (toonIntensity < 0.1) toonIntensity = 0.0;
+		else if (toonIntensity < 0.2) toonIntensity = 0.2;
+		else if (toonIntensity < 0.5) toonIntensity = 0.5;
+		else if (toonIntensity < 1.0) toonIntensity = 1.0;
 		vec3.scale(color.rgba, toonIntensity, color.rgbaShaded);
 
 		var toonSpecular = intensity.specular;
-		if (toonSpecular < sumOfAllLightTypesIntensity * 0.25) toonSpecular = 0.0;
-		else if (toonSpecular < sumOfAllLightTypesIntensity) toonSpecular = 1.0;
+		if (toonSpecular < 0.5) toonSpecular = 0.0;
+		else toonSpecular = 1.0;
 
 		// Add white specular light.
 		var specularWhite = [255, 255, 255, 255];

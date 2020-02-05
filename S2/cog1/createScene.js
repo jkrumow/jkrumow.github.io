@@ -89,7 +89,7 @@ define(["exports", "scenegraph", "animation"], //
 			var sun = scenegraph.createNodeWithModel("sun", "mySphere", { scale: 180, color: 11, sphereness: 3 });
 
 			// use orbit as invisible object to rotate sun differently than planet
-			var orbit = scenegraph.createNodeWithModel("planetOrbit", "plain", { scale: 0 }, sun);
+			var orbit = scenegraph.createNodeWithModel("orbit", "plain", { scale: 0 }, sun);
 			var planet = scenegraph.createNodeWithModel("planet", "mySphere", { scale: 70, color: 13, sphereness: 3 }, orbit);
 
 			// use ring to rotate moon differently than planet
@@ -99,6 +99,7 @@ define(["exports", "scenegraph", "animation"], //
 			// positioning within node hierarchy
 			sun.rotate([0.39, 0.0, 0.0]);
 			planet.translate([400, 0.0, 0.0]);
+			planet.rotate([0.0, 0.0, 0.5]);
 			ring.translate([400, 0.0, 0.0]);
 			ring.rotate([-1.6, 0.0, 0.0]);
 			moon.translate([100, 0.0, 0.0]);

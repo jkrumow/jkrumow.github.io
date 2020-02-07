@@ -19,7 +19,7 @@ define(["exports"], function (exports) {
 	var shadingFunctionNames = ["none", "flat", "gouraud", "phong", "toon"];
 	// Name of the current/default shading function, which used for all nodes.
 	// Possible names are defined in shadingFunctionNames.
-	var shadingFunctionName = "toon";
+	var shadingFunctionName = "phong";
 	// Shading-function called from raster.scanline function.
 	var shadingFuncton = null;
 

@@ -82,7 +82,7 @@ define(["exports", "app", "layout", "scene", "scenegraph", "animation", "shader"
             initDisplayButtons();
             initTransformationButtons();
             initEffektButtons();
-            initProjectionControls();
+            //initProjectionControls();
 
             // BEGIN exercise Shading       
             // Comment this in. 

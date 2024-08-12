@@ -56,8 +56,8 @@ define(["exports", "app", "layout", "scene", "scenegraph", "animation", "shader"
         // Values of the slider have to be set in postSceneInit.
         var lightSliders = [];
         var ambientLightIntensitySlider;
-        var pointLightIntensitySlider;
-        var specularLightIntensitySlider;
+        var pointLighttensitySlider;
+        var specularLighttensitySlider;
         var specularLightExponentSlider;
 
         /**
@@ -82,7 +82,7 @@ define(["exports", "app", "layout", "scene", "scenegraph", "animation", "shader"
             initDisplayButtons();
             initTransformationButtons();
             initEffektButtons();
-            //initProjectionControls();
+            initProjectionControls();
 
             // BEGIN exercise Shading       
             // Comment this in. 
@@ -324,15 +324,15 @@ define(["exports", "app", "layout", "scene", "scenegraph", "animation", "shader"
         function initLightControls() {
 
             // Sliders for light intensities.
-            ambientLightIntensitySlider = createSlider(0, 0, 3, 31, "ambient light intensity: ", function (value) {
+            ambientLighttensitySlider = createSlider(0, 0, 3, 31, "ambient light intensity: ", function (value) {
                 scenegraph.setLights(value, undefined, undefined);
                 scene.setUpToDate();
             }, true);
-            pointLightIntensitySlider = createSlider(1.0, 0, 5, 51, "point light intensity: ", function (value) {
+            pointLighttensitySlider = createSlider(1.0, 0, 5, 51, "point light intensity: ", function (value) {
                 scenegraph.setLights(undefined, value, undefined);
                 scene.setUpToDate();
             }, true);
-            specularLightIntensitySlider = createSlider(1.0, 0, 20, 41, "specular light intensity: ", function (value) {
+            specularLighttensitySlider = createSlider(1.0, 0, 20, 41, "specular light intensity: ", function (value) {
                 scenegraph.setLights(undefined, undefined, undefined, value, undefined);
                 scene.setUpToDate();
             }, true);
@@ -341,17 +341,17 @@ define(["exports", "app", "layout", "scene", "scenegraph", "animation", "shader"
                 scene.setUpToDate();
             }, true);
             // Set light intensities again when sliders are instanced.
-            ambientLightIntensitySlider.attr('value', shader.getAmbientLightIntensity());
-            domStyle.set(ambientLightIntensitySlider, 'active', true);
-            domStyle.set(ambientLightIntensitySlider, 'disabled', false);
+            ambientLighttensitySlider.attr('value', shader.getAmbientLighttensity());
+            domStyle.set(ambientLighttensitySlider, 'active', true);
+            domStyle.set(ambientLighttensitySlider, 'disabled', false);
             //
-            pointLightIntensitySlider.attr('value', shader.getPointLightIntensity());
-            domStyle.set(pointLightIntensitySlider, 'active', true);
-            domStyle.set(pointLightIntensitySlider, 'disabled', false);
+            pointLighttensitySlider.attr('value', shader.getPointLighttensity());
+            domStyle.set(pointLighttensitySlider, 'active', true);
+            domStyle.set(pointLighttensitySlider, 'disabled', false);
             //
-            specularLightIntensitySlider.attr('value', shader.getSpecularLightIntensity());
-            domStyle.set(specularLightIntensitySlider, 'active', true);
-            domStyle.set(specularLightIntensitySlider, 'disabled', false);
+            specularLighttensitySlider.attr('value', shader.getSpecularLighttensity());
+            domStyle.set(specularLighttensitySlider, 'active', true);
+            domStyle.set(specularLighttensitySlider, 'disabled', false);
             //
             specularLightExponentSlider.attr('value', shader.getSpecularLightExponent());
             domStyle.set(specularLightExponentSlider, 'active', true);
